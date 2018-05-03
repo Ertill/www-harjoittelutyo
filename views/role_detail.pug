@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Players
+  
+  ul
+  each player in role_players
+    li 
+      a(href=player.url) #{player.first_name}  "#{player.nickname}" #{player.family_name}  
+      |  (#{player.team.name})
+
+  else
+    li No players play this role.
+  
+  
+  
+  hr
+  p
+  a(href=role.url+'/delete') Delete role
+  p
+  a(href=role.url+'/update') Update role

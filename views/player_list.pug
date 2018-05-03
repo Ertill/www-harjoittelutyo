@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each player in player_list
+    li 
+      a(href=player.url) #{player.first_name}  "#{player.nickname}" #{player.family_name}  
+      |  (#{player.team.name})
+
+  else
+    li There are no players.

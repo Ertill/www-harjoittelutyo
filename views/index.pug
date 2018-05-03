@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 E-SPORTS READY
+  p Welcome to the E-sports catalog. You can browse and add e-sports players in here.
+
+  h1 Contents
+
+  if error
+    p Error getting dynamic content.
+  else
+    p The catalog has the following record counts:
+
+    ul
+      li #[strong Players:] !{data.Player_count}
+      li #[strong Games:] !{data.Game_count}
+      li #[strong Teams:] !{data.Team_count}
+      li #[strong Roles:] !{data.Role_count}

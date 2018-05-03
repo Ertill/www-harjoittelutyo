@@ -1,0 +1,39 @@
+extends layout
+
+block content
+
+  h1 Player: "#{player.nickname}"
+  
+  div(style='margin-left:20px;margin-top:20px')
+	
+	
+   h3 Name: #{player.first_name} #{player.family_name}
+   
+   div(style='margin-left:20px;margin-top:10px')
+   
+   h3 Birthdate: #{player.date_of_birth_formatted}
+   
+   div(style='margin-left:20px;margin-top:10px')
+   
+   h3 Team: #{player.team.name}
+   
+   div(style='margin-left:20px;margin-top:10px')
+   
+   h3 Game: #{player.game.name}
+   
+   div(style='margin-left:20px;margin-top:10px')
+   
+   h3 Role: #{player.role.name}
+   
+   div(style='margin-left:20px;margin-top:10px')
+   
+   h3 Nationality: #{player.nationality}
+   
+   hr
+   p
+   a(href=player.url+'/delete') Delete player
+   p
+   a(href=player.url+'/update') Update player
+
+
+    

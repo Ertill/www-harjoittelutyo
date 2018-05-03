@@ -1,0 +1,27 @@
+extends layout
+
+
+block content
+
+  h1 Team: #{team.name}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Players
+
+    dl
+    each player in team_players
+      dt 
+        a(href=player.url) #{player.first_name}  "#{player.nickname}" #{player.family_name}
+
+    else
+      p This team has no players.
+  
+
+  hr
+  p
+  a(href=team.url+'/delete') Delete team
+  p
+  a(href=team.url+'/update') Update team
+
+ 

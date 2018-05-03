@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1 #{title}: #{game.name}
+  
+  if game_players.length
+  
+    p #[strong Delete the following players before attempting to delete this game.]
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Players
+    
+      dl
+      each player in game_players
+        dt 
+          a(href=player.url) #{player.nickname}
+        dd #{player.summary}
+
+  else
+    p Do you really want to delete this game?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#gameid.form-control(type='hidden',name='gameid', required='true', value=game._id )
+
+      button.btn.btn-primary(type='submit') Delete

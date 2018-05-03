@@ -1,0 +1,32 @@
+extends layout
+
+block content
+   
+  h1 #{game.name}
+
+  h3 #{game.summary}
+  
+  
+  hr
+  
+  h4 Players
+  
+  ul
+  each player in game_players
+    li 
+      a(href=player.url) #{player.first_name}  "#{player.nickname}" #{player.family_name}  
+      |  (#{player.team.name})
+
+  else
+    li No players play this game.
+  
+  
+  
+  
+  
+  hr
+  p
+  a(href=game.url+'/delete') Delete game
+  
+  p
+  a(href=game.url+'/update') Update game

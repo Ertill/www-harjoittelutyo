@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1= title
+
+  
+  h2
+   form(method='POST' action='')
+    div.form-group
+      label(for='first_name') First Name:
+      input#first_name.form-control(type='text' placeholder='First name (John) ' name='first_name' required='true' value=(undefined===player ? '' : player.first_name) )
+      label(for='nickname') Nickname:
+      input#nickname.form-control(type='text' placeholder='Nickname (Smithy)' name='nickname' required='true' value=(undefined===player ? '' : player.nickname) )
+      label(for='family_name') Family Name:
+      input#family_name.form-control(type='text' placeholder='Family name (Smith)' name='family_name' required='true' value=(undefined===player ? '' : player.family_name))
+      label(for='nationality') Nationality:
+      input#nationality.form-control(type='text' placeholder='Nationality (USA)' name='nationality' required='true' value=(undefined===player ? '' : player.nationality))
+    div.form-group
+      label(for='date_of_birth') Birthdate:
+      input#date_of_birth.form-control(type='date' name='date_of_birth' value=(undefined===player ? '' : player.date_of_birth) )
+  
+    div.form-group
+      label(for='game') Game:
+      select#game.form-control(type='select', placeholder='Select game' name='game' required='true' )
+        for game in games
+          if player
+            option(value=game._id selected=(game._id.toString()==player.game.id || game._id.toString()==player.game) ? 'selected' : false)  #{game.name}
+          else
+            option(value=game._id) #{game.name}
+    div.form-group
+      label(for='role') Role:
+      select#role.form-control(type='select', placeholder='Select role' name='role' required='true' )
+        for role in roles
+          if player
+            option(value=role._id selected=(role._id.toString()==player.role.id || role._id.toString()==player.role) ? 'selected' : false)  #{role.name}
+          else
+            option(value=role._id) #{role.name}
+    div.form-group
+      label(for='team') Team:
+      select#team.form-control(type='select', placeholder='Select team' name='team' required='true' )
+        for team in teams
+          if player
+            option(value=team._id selected=(team._id.toString()==player.team.id || team._id.toString()==player.team) ? 'selected' : false)  #{team.name}
+          else
+            option(value=team._id) #{team.name}
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
